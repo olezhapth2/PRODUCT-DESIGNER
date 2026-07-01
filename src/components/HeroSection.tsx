@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../lib/i18n';
 import FadeIn from './FadeIn';
@@ -10,11 +10,30 @@ const FRAME_PATH = 'frames/frame-';
 export default function HeroSection() {
   const { lang, setLang, t } = useLang();
   const headingRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const loadedRef = useRef(0);
   const currentFrameRef = useRef(0);
   const rafRef = useRef<number>(0);
+
+  useLayoutEffect(() => {
+    const el = textRef.current;
+    const container = headingRef.current;
+    if (!el || !container) return;
+    const fit = () => {
+      el.style.fontSize = '10vw';
+      const measured = el.scrollWidth;
+      if (measured <= 0) return;
+      const avail = container.clientWidth - 40;
+      const px = (avail / measured) * parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = `${(px / window.innerWidth) * 100}vw`;
+    };
+    document.fonts.ready.then(fit);
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, [t.heroHeading, lang]);
 
   useEffect(() => {
     const images: HTMLImageElement[] = [];
@@ -105,6 +124,7 @@ export default function HeroSection() {
       <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
         <FadeIn delay={0.15} y={40}>
           <h1
+            ref={textRef}
             className="hero-heading font-black uppercase tracking-tight leading-none"
           >
             {t.heroHeading}
