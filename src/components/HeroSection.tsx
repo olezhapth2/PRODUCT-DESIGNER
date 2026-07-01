@@ -120,23 +120,10 @@ export default function HeroSection() {
   const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
   return (
-    <section className="relative h-screen flex flex-col overflow-x-visible">
-      <svg style={{ display: 'none' }}>
-        <defs>
-          <filter id="liquid-glass" x="-5%" y="-5%" width="110%" height="110%" colorInterpolationFilters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.025" numOctaves="2" seed="5" result="noise" />
-            <feGaussianBlur in="noise" stdDeviation="1.5" result="blurredNoise" />
-            <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="18" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-            <feSpecularLighting in="blurredNoise" surfaceScale="3" specularConstant="0.8" specularExponent="25" result="specular">
-              <fePointLight x="50%" y="-20%" z="120" />
-            </feSpecularLighting>
-            <feComposite in="specular" in2="displaced" operator="arithmetic" k1="0" k2="1" k3="0.15" k4="0" />
-          </filter>
-        </defs>
-      </svg>
+    <section className="relative h-screen flex flex-col overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-[10px] md:px-10 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
+      <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}

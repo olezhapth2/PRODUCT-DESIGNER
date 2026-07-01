@@ -42,13 +42,16 @@ export default function FooterSection() {
   const [popupSrc, setPopupSrc] = useState<string | null>(null);
 
   return (
-    <footer id="contact" className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-[95]">
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-12">
+    <footer id="contact" className="py-20 sm:py-24 md:py-32 relative z-[95]">
+      <div className="w-full px-5 mb-12 sm:mb-16 md:mb-20">
         <FadeIn>
           <h2 className="hero-heading font-black uppercase text-center leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 9vw, 130px)' }}>
             {t.letsTalk}
           </h2>
         </FadeIn>
+      </div>
+
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-12 px-5">
 
         <FadeIn delay={0.2}>
           <p className="text-[#D7E2EA]/60 text-center max-w-md text-sm sm:text-base leading-relaxed">
