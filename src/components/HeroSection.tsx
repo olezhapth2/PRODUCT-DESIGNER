@@ -22,12 +22,13 @@ export default function HeroSection() {
     const container = headingRef.current;
     if (!el || !container) return;
     const fit = () => {
+      el.style.whiteSpace = 'nowrap';
       el.style.fontSize = '10vw';
       void el.offsetHeight;
       const measured = el.scrollWidth;
+      el.style.whiteSpace = '';
       if (measured <= 0) return;
-      const avail = container.clientWidth - (parseFloat(getComputedStyle(container).paddingLeft) + parseFloat(getComputedStyle(container).paddingRight));
-      const px = (avail / measured) * parseFloat(getComputedStyle(el).fontSize);
+      const px = (window.innerWidth / measured) * parseFloat(getComputedStyle(el).fontSize) * 0.97;
       el.style.fontSize = `${(px / window.innerWidth) * 100}vw`;
     };
     document.fonts.ready.then(fit);
