@@ -56,7 +56,7 @@ const translations = {
         whatWasDone: 'Affiliate platform, 20+ products on one system. Designed everything from acquisition pages to dense ops dashboards.',
         result: '+8% checkout conversion after A/B. New product UI in under 7 days. System adopted across all partner products.',
         role: '', duration: '3 years · 4 designers, 8 engineers', team: '',
-        images: { col1Top: '/images/Gate19 col1 Top.png', col1Bottom: '/images/Gate19 col1 Botton.png', col2: '/images/Gate19 col2.gif' },
+        images: { col1Top: '/images/Gate19-col1-Top.png', col1Bottom: '/images/Gate19-col1-Botton.png', col2: '/images/Gate19-col2.gif' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -66,7 +66,7 @@ const translations = {
         whatWasDone: 'Mature SaaS video platform. Redesigned onboarding with light gamification. 100+ landing variants tested, each with an explicit conversion hypothesis.',
         result: '+12% trial-to-paid. 100+ landing experiments shipped. 50+ payment gateways integrated across 5+ markets.',
         role: '', duration: '3 years · solo design, cross-functional team', team: '',
-        images: { col1Top: '/images/Jav col1 Top.png', col1Bottom: '/images/Jav col1 Botton.png', col2: '/images/Jav col2.png' },
+        images: { col1Top: '/images/Jav-col1-Top.png', col1Bottom: '/images/Jav-col1-Botton.png', col2: '/images/Jav-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -76,7 +76,7 @@ const translations = {
         whatWasDone: 'AI character generation product. Designed full UX of generation cycles — onboarding through a character guide, social gallery for retention loop, real-time agent control UX.',
         result: '+27% WoW return visits. +19% session length. 10K+ creatives tested across acquisition channels.',
         role: '', duration: '2 years · 3 designers, ML team', team: '',
-        images: { col1Top: '/images/shugar col1 Top.png', col1Bottom: '/images/shugar col1 Botton.png', col2: '/images/shugar col2.png' },
+        images: { col1Top: '/images/shugar-col1-Top.png', col1Bottom: '/images/shugar-col1-Botton.png', col2: '/images/shugar-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -86,7 +86,7 @@ const translations = {
         whatWasDone: 'HR CRM for multi-company holding. Rebuilt IA around real HR workflows. Added Slack alerts for priority exceptions. Contextual actions in-row — no screen switching per case.',
         result: '−40% manual follow-up across the holding. −28% median salary queue time.',
         role: '', duration: '3 years · solo design, ops stakeholders', team: '',
-        images: { col1Top: '/images/Corgday col1 Top.png', col1Bottom: '/images/Corgday col1 Botton.png', col2: '/images/Corgday col2.png' },
+        images: { col1Top: '/images/Corgday-col1-Top.png', col1Bottom: '/images/Corgday-col1-Botton.png', col2: '/images/Corgday-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -96,7 +96,7 @@ const translations = {
         whatWasDone: 'White-label UX architecture: theming engine, brand token system, multi-tenant dashboard. Component library that adapts per client without touching the structure.',
         result: '5+ brands on one codebase. −70% per-brand setup time. Brand onboarding in under a day.',
         role: '', duration: '2 years · 2 designers, 5 engineers', team: '',
-        images: { col1Top: '/images/Whitelable col1 Top.png', col1Bottom: '/images/Whitelable col1 Botton.png', col2: '/images/Whitelable col2.png' },
+        images: { col1Top: '/images/Whitelable-col1-Top.png', col1Bottom: '/images/Whitelable-col1-Botton.png', col2: '/images/Whitelable-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -106,7 +106,7 @@ const translations = {
         whatWasDone: 'Brand positioning, site architecture, visual language — from scratch. v1 launched, then v2 as a vibecode experiment: layouts AI-generated, refined by hand, the site itself becomes the demo.',
         result: 'One site, two jobs: selling to clients and screening candidates. v2 became a filter — people who got excited by it were worth hiring.',
         role: '', duration: '2 years · solo', team: '',
-        images: { col1Top: '/images/PNB col1 Top.png', col1Bottom: '/images/PNB col1 Botton.png', col2: '/images/PNB col2.png' },
+        images: { col1Top: '/images/PNB-col1-Top.png', col1Bottom: '/images/PNB-col1-Botton.png', col2: '/images/PNB-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -116,7 +116,7 @@ const translations = {
         whatWasDone: "Designed White Paper on AI Ethics (ethics.a-ai.ru) — longform architecture for audiences from policymakers to practitioners. Designed Adxad ad platform for B2B self-qualification without sales. Built the holding's shared AI creative pipeline: n8n, generative models, review queues for consistent quality at scale.",
         result: '~30 brand identities and ~100 logo directions over 3 years. Each delivered as a self-service kit. AI pipeline later connected to White Label as the publishing step.',
         role: '', duration: '3 years · design lead, cross-functional', team: '',
-        images: { col1Top: '/images/Miraitech Top.png', col1Bottom: '/images/Miraitech col1 Botton.png', col2: '/images/Miraitech col2.png' },
+        images: { col1Top: '/images/Miraitech-Top.png', col1Bottom: '/images/Miraitech-col1-Botton.png', col2: '/images/Miraitech-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
     ],
@@ -157,7 +157,7 @@ const translations = {
         whatWasDone: 'Партнёрская платформа, 20+ продуктов на одной системе. Делал всё — от страниц аквизиции до плотных операционных дашбордов.',
         result: '+8% конверсия чекаута после A/B. UI нового продукта за <7 дней. Система внедрена на все партнёрские продукты.',
         role: '', duration: '3 года · 4 дизайнера, 8 инженеров', team: '',
-        images: { col1Top: '/images/Gate19 col1 Top.png', col1Bottom: '/images/Gate19 col1 Botton.png', col2: '/images/Gate19 col2.gif' },
+        images: { col1Top: '/images/Gate19-col1-Top.png', col1Bottom: '/images/Gate19-col1-Botton.png', col2: '/images/Gate19-col2.gif' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -167,7 +167,7 @@ const translations = {
         whatWasDone: 'Зрелая SaaS-видеоплатформа. Переделал онбординг с лёгкой геймификацией. 100+ вариантов лендингов, каждый — с явной гипотезой конверсии.',
         result: '+12% триал→платный. 100+ лендинг-экспериментов в продакшне. 50+ платёжных шлюзов на 5+ рынках.',
         role: '', duration: '3 года · дизайн соло, кросс-функциональная команда', team: '',
-        images: { col1Top: '/images/Jav col1 Top.png', col1Bottom: '/images/Jav col1 Botton.png', col2: '/images/Jav col2.png' },
+        images: { col1Top: '/images/Jav-col1-Top.png', col1Bottom: '/images/Jav-col1-Botton.png', col2: '/images/Jav-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -177,7 +177,7 @@ const translations = {
         whatWasDone: 'Продукт генерации AI-персонажей. Спроектировал полный UX циклов генерации — онбординг через персонажа-гайда, социальная галерея для петли удержания, UX управления агентом в реальном времени.',
         result: '+27% возвратов за неделю. +19% длина сессии. 10K+ креативов протестировано на каналах аквизиции.',
         role: '', duration: '2 года · 3 дизайнера, ML-команда', team: '',
-        images: { col1Top: '/images/shugar col1 Top.png', col1Bottom: '/images/shugar col1 Botton.png', col2: '/images/shugar col2.png' },
+        images: { col1Top: '/images/shugar-col1-Top.png', col1Bottom: '/images/shugar-col1-Botton.png', col2: '/images/shugar-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -187,7 +187,7 @@ const translations = {
         whatWasDone: 'HR CRM для мультикомпанийного холдинга. Пересобрал IA вокруг реального рабочего процесса HR. Добавил Slack-алерты на приоритетные исключения. Контекстные действия в строке — без перехода на другой экран.',
         result: '−40% ручного follow-up по всему холдингу. −28% медианное время очереди по ЗП.',
         role: '', duration: '3 года · дизайн соло, операционные стейкхолдеры', team: '',
-        images: { col1Top: '/images/Corgday col1 Top.png', col1Bottom: '/images/Corgday col1 Botton.png', col2: '/images/Corgday col2.png' },
+        images: { col1Top: '/images/Corgday-col1-Top.png', col1Bottom: '/images/Corgday-col1-Botton.png', col2: '/images/Corgday-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -197,7 +197,7 @@ const translations = {
         whatWasDone: 'Архитектура white-label UX: теминг-движок, система бренд-токенов, мульти-tenant дашборд. Библиотека компонентов, которая адаптируется под клиента без касания структуры.',
         result: '5+ брендов на одной кодовой базе. −70% время настройки нового бренда. Онбординг бренда меньше чем за день.',
         role: '', duration: '2 года · 2 дизайнера, 5 инженеров', team: '',
-        images: { col1Top: '/images/Whitelable col1 Top.png', col1Bottom: '/images/Whitelable col1 Botton.png', col2: '/images/Whitelable col2.png' },
+        images: { col1Top: '/images/Whitelable-col1-Top.png', col1Bottom: '/images/Whitelable-col1-Botton.png', col2: '/images/Whitelable-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -207,7 +207,7 @@ const translations = {
         whatWasDone: 'Бренд-позиционирование, архитектура сайта, визуальный язык — с нуля. Запустил v1, затем v2 как vibecode-эксперимент: макеты сгенерированы AI, доработаны вручную, сайт сам стал демонстрацией.',
         result: 'Один сайт, две задачи: продавал клиентам и скринил кандидатов. v2 стал фильтром — те, кого он зажигал, оказывались теми, кого стоило нанять.',
         role: '', duration: '2 года · соло', team: '',
-        images: { col1Top: '/images/PNB col1 Top.png', col1Bottom: '/images/PNB col1 Botton.png', col2: '/images/PNB col2.png' },
+        images: { col1Top: '/images/PNB-col1-Top.png', col1Bottom: '/images/PNB-col1-Botton.png', col2: '/images/PNB-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
       {
@@ -217,7 +217,7 @@ const translations = {
         whatWasDone: 'Спроектировал Белую книгу этики ИИ (ethics.a-ai.ru) — архитектура лонгрида для аудитории от политиков до практиков. Adxad — рекламная платформа для B2B-самоквалификации без отдела продаж. Построил общий AI-конвейер креативов холдинга: n8n, генеративные модели, очереди ревью для стабильного качества на масштабе.',
         result: '~30 фирстилей и ~100 логонаправлений за 3 года. Каждый поставлялся как self-service кит. AI-конвейер позже подключился к White Label как шаг публикации.',
         role: '', duration: '3 года · дизайн-лид, кросс-функционально', team: '',
-        images: { col1Top: '/images/Miraitech Top.png', col1Bottom: '/images/Miraitech col1 Botton.png', col2: '/images/Miraitech col2.png' },
+        images: { col1Top: '/images/Miraitech-Top.png', col1Bottom: '/images/Miraitech-col1-Botton.png', col2: '/images/Miraitech-col2.png' },
         notionUrl: 'https://olezhapth2.github.io/od/#projects',
       },
     ],
