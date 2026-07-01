@@ -54,7 +54,7 @@ export default function FooterSection() {
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-12 px-5">
 
         <FadeIn delay={0.2}>
-          <p className="text-[#D7E2EA]/60 text-center max-w-md text-sm sm:text-base leading-relaxed">
+          <p className="text-[#D7E2EA]/60 text-center max-w-lg text-sm sm:text-base leading-relaxed">
             {t.footerDesc}
           </p>
         </FadeIn>

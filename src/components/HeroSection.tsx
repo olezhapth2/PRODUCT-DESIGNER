@@ -21,12 +21,14 @@ export default function HeroSection() {
   useEffect(() => {
     const fit = () => {
       const text = textRef.current;
-      if (!text) return;
+      const container = headingRef.current;
+      if (!text || !container) return;
       text.style.fontSize = '10vw';
       requestAnimationFrame(() => {
         const textWidth = text.scrollWidth;
         if (textWidth > 0) {
-          const targetVw = 14.3 * (window.innerWidth / textWidth);
+          const availableWidth = container.clientWidth - 40;
+          const targetVw = 10 * (availableWidth / textWidth);
           setFontSize(`${targetVw}vw`);
         }
       });

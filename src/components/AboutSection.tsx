@@ -17,7 +17,7 @@ export default function AboutSection() {
 
         <AnimatedText
           text={t.aboutText}
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px] flex flex-wrap"
+          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[600px] flex flex-wrap"
         />
 
         <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
