@@ -79,7 +79,7 @@ export default function FooterSection() {
             </a>
             <a href="https://olezhapth2.github.io/od/#projects" target="_blank" rel="noopener noreferrer" className={btnClass}>
               {icons.external}
-              Full Projects
+              {t.fullProjects}
             </a>
             <a href="https://www.threads.com/@olegdevaytow?invite=0" target="_blank" rel="noopener noreferrer" className={btnClass}>
               {icons.at}
@@ -87,7 +87,7 @@ export default function FooterSection() {
             </a>
             <a href="https://olegdevyatow.tilda.ws" target="_blank" rel="noopener noreferrer" className={btnClass}>
               {icons.external}
-              Old Portfolio
+              {t.oldPortfolio}
             </a>
           </div>
         </FadeIn>
