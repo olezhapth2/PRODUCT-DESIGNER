@@ -2,18 +2,18 @@ import { useEffect, useRef } from 'react';
 
 // Row 1: q, w, e, r
 const row1Images = [
-  '/images/marquee/q.gif',
-  '/images/marquee/w.gif',
-  '/images/marquee/e.gif',
-  '/images/marquee/r.gif',
+  'images/marquee/q.gif',
+  'images/marquee/w.gif',
+  'images/marquee/e.gif',
+  'images/marquee/r.gif',
 ];
 
 // Row 2: t, y, u, i
 const row2Images = [
-  '/images/marquee/t.gif',
-  '/images/marquee/y.gif',
-  '/images/marquee/u.gif',
-  '/images/marquee/i.gif',
+  'images/marquee/t.gif',
+  'images/marquee/y.gif',
+  'images/marquee/u.gif',
+  'images/marquee/i.gif',
 ];
 
 export default function MarqueeSection() {

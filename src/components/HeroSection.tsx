@@ -5,7 +5,7 @@ import FadeIn from './FadeIn';
 import ContactButton from './ContactButton';
 
 const TOTAL_FRAMES = 119;
-const FRAME_PATH = '/frames/frame-';
+const FRAME_PATH = 'frames/frame-';
 
 export default function HeroSection() {
   const { lang, setLang, t } = useLang();

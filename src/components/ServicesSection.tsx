@@ -44,7 +44,7 @@ export default function ServicesSection() {
                     exit={{ opacity: 0, x: 40, scale: 0.9 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   >
-                    {[['/images/icons/rocket.png', '/images/icons/pencil.png'], ['/images/icons/loud-speaker.png', '/images/icons/coffee.png'], ['/images/icons/crowned.png', '/images/icons/outlet.png'], ['/images/icons/clapperboard.png', '/images/icons/spary.png'], ['/images/icons/magic.png', '/images/icons/rotten.png']][i].map((icon, j) => (
+                    {[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i].map((icon, j) => (
                       <motion.img
                         key={icon}
                         src={icon}

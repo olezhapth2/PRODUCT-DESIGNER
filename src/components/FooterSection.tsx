@@ -93,9 +93,9 @@ export default function FooterSection() {
           <div className="flex flex-col items-center gap-3 max-w-[500px] w-full">
             <div
               className="rounded-2xl overflow-hidden border border-[#D7E2EA]/10 cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
-              onClick={() => setPopupSrc('/aimimo.png')}
+              onClick={() => setPopupSrc('aimimo.png')}
             >
-              <img src="/aimimo.png" alt="" className="w-full block" />
+              <img src="aimimo.png" alt="" className="w-full block" />
             </div>
             <p className="text-[#D7E2EA]/40 text-xs text-center">
               {t.footerCardCaption}
