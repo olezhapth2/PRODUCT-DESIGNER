@@ -9,7 +9,6 @@ const FRAME_PATH = 'frames/frame-';
 
 export default function HeroSection() {
   const { lang, setLang, t } = useLang();
-  const headingRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
@@ -19,16 +18,21 @@ export default function HeroSection() {
 
   useLayoutEffect(() => {
     const el = textRef.current;
-    const container = headingRef.current;
-    if (!el || !container) return;
+    if (!el) return;
+
     const fit = () => {
-      el.style.cssText = 'font-size:10vw;white-space:nowrap;';
-      void el.offsetHeight;
-      const measured = el.scrollWidth;
-      if (measured <= 0) return;
-      el.style.fontSize = `${(window.innerWidth / measured) * 10}vw`;
-      el.style.whiteSpace = '';
+      const span = document.createElement('span');
+      span.textContent = t.heroHeading;
+      span.style.cssText =
+        "position:absolute;visibility:hidden;pointer-events:none;white-space:nowrap;" +
+        "font-family:'Dela Gothic One',sans-serif;font-weight:900;" +
+        "text-transform:uppercase;letter-spacing:-0.025em;font-size:10vw;";
+      document.body.appendChild(span);
+      const w = span.scrollWidth;
+      document.body.removeChild(span);
+      if (w > 0) el.style.fontSize = `${(innerWidth / w) * 10}vw`;
     };
+
     document.fonts.ready.then(fit);
     fit();
     window.addEventListener('resize', fit);
@@ -121,7 +125,7 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-visible">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-1 md:px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
+      <div className="relative z-20 w-full px-1 md:px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
