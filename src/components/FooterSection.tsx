@@ -77,10 +77,6 @@ export default function FooterSection() {
               {icons.behance}
               Behance
             </a>
-            <a href="https://olegdevyatow.tilda.ws" target="_blank" rel="noopener noreferrer" className={btnClass}>
-              {icons.external}
-              Old Portfolio
-            </a>
             <a href="https://olezhapth2.github.io/od/#projects" target="_blank" rel="noopener noreferrer" className={btnClass}>
               {icons.external}
               Full Projects
@@ -88,6 +84,10 @@ export default function FooterSection() {
             <a href="https://www.threads.com/@olegdevaytow?invite=0" target="_blank" rel="noopener noreferrer" className={btnClass}>
               {icons.at}
               Threads
+            </a>
+            <a href="https://olegdevyatow.tilda.ws" target="_blank" rel="noopener noreferrer" className={btnClass}>
+              {icons.external}
+              Old Portfolio
             </a>
           </div>
         </FadeIn>
