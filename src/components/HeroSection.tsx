@@ -1,0 +1,287 @@
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../lib/i18n';
+import FadeIn from './FadeIn';
+import ContactButton from './ContactButton';
+
+const TOTAL_FRAMES = 119;
+const FRAME_PATH = '/frames/frame-';
+
+export default function HeroSection() {
+  const { lang, setLang, t } = useLang();
+  const headingRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [fontSize, setFontSize] = useState('10vw');
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const loadedRef = useRef(0);
+  const currentFrameRef = useRef(0);
+  const rafRef = useRef<number>(0);
+
+  useEffect(() => {
+    const fit = () => {
+      const text = textRef.current;
+      if (!text) return;
+      text.style.fontSize = '10vw';
+      const textWidth = text.scrollWidth;
+      if (textWidth > 0) {
+        const targetVw = 10 * (window.innerWidth / textWidth);
+        setFontSize(`${targetVw}vw`);
+      }
+    };
+    document.fonts.ready.then(fit);
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, [t.heroHeading, lang]);
+
+  useEffect(() => {
+    const images: HTMLImageElement[] = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.src = `${FRAME_PATH}${String(i).padStart(3, '0')}.jpg`;
+      img.onload = () => {
+        loadedRef.current++;
+        if (loadedRef.current === 1) drawFrame(0);
+      };
+      images.push(img);
+    }
+    framesRef.current = images;
+  }, []);
+
+  const drawFrame = useCallback((index: number) => {
+    const canvas = canvasRef.current;
+    const frames = framesRef.current;
+    if (!canvas || !frames[index]) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    if (canvas.width !== frames[index].naturalWidth) {
+      canvas.width = frames[index].naturalWidth;
+      canvas.height = frames[index].naturalHeight;
+    }
+    ctx.drawImage(frames[index], 0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        const x = e.clientX / window.innerWidth;
+        const frame = Math.min(TOTAL_FRAMES - 1, Math.floor(x * TOTAL_FRAMES));
+        if (frame !== currentFrameRef.current) {
+          currentFrameRef.current = frame;
+          drawFrame(frame);
+        }
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [drawFrame]);
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
+
+  return (
+    <section className="relative h-screen flex flex-col overflow-x-clip">
+      <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 pb-4 fixed top-0 left-0 right-0 z-50" style={{ mixBlendMode: 'difference' }}>
+        <div className="hidden md:flex items-center gap-6 md:gap-10">
+          {t.nav.map((item, i) => {
+            const anchors = ['work', 'about', 'services', 'contact'];
+            return (
+              <a
+                key={item}
+                href={`#${anchors[i]}`}
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 hover:scale-105 transition-all duration-200 bg-black px-2 py-1"
+              >
+                {item}
+              </a>
+            );
+          })}
+        </div>
+        <div className="flex items-center gap-4">
+          <a href="#contact" className="hidden md:inline text-white font-medium uppercase tracking-wider text-sm md:text-base blink-subtle bg-black px-3 py-1">
+            {t.letsTalk}
+          </a>
+          <div className="hidden md:flex items-center gap-1 bg-black rounded-full p-1">
+            <button
+              onClick={() => setLang('en')}
+              className={`px-3 py-1 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 hover:scale-105 ${lang === 'en' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
+            >
+              En
+            </button>
+            <button
+              onClick={() => setLang('ru')}
+              className={`px-3 py-1 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 hover:scale-105 ${lang === 'ru' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
+            >
+              Ru
+            </button>
+          </div>
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="md:hidden bg-black p-2 rounded-lg"
+            aria-label="Open menu"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center gap-8 px-6 md:hidden overflow-y-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+          >
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="absolute top-6 right-6 bg-black p-2 rounded-lg"
+              aria-label="Close menu"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+
+            <div className="flex flex-col items-center gap-5">
+              {t.nav.map((item, i) => {
+                const anchors = ['work', 'about', 'services', 'contact'];
+                return (
+                  <a
+                    key={item}
+                    href={`#${anchors[i]}`}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-[#D7E2EA] font-medium uppercase tracking-wider text-2xl hover:opacity-70 transition-opacity"
+                  >
+                    {item}
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="w-full max-w-xs flex flex-col items-center gap-3 mt-4">
+              <a href="mailto:olegdevyatow@gmail.com" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Email
+              </a>
+              <a href="https://t.me/olegdevyatow" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg>
+                Telegram
+              </a>
+              <a href="https://www.linkedin.com/in/oleg-devyatow-653584367/" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+              <a href="https://www.behance.net/reesoonki" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                Behance
+              </a>
+              <a href="https://olegdevyatow.tilda.ws" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Old Portfolio
+              </a>
+              <a href="https://olezhapth2.github.io/od/#projects" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Full Projects
+              </a>
+              <a href="https://www.threads.com/@olegdevaytow?invite=0" target="_blank" rel="noopener noreferrer" className={mobileBtnClass}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+                Threads
+              </a>
+            </div>
+
+            <div className="flex items-center gap-2 mt-4">
+              <button
+                onClick={() => { setLang('en'); setMenuOpen(false); }}
+                className={`px-4 py-2 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 ${lang === 'en' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
+              >
+                En
+              </button>
+              <button
+                onClick={() => { setLang('ru'); setMenuOpen(false); }}
+                className={`px-4 py-2 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 ${lang === 'ru' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
+              >
+                Ru
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div ref={headingRef} className="mt-20 sm:mt-16 relative z-20">
+        <FadeIn delay={0.15} y={40}>
+          <h1
+            ref={textRef}
+            className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap"
+            style={{ fontSize }}
+          >
+            {t.heroHeading}
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.25} y={30}>
+          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3 px-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 2.5rem)' }}>
+            {t.heroName}
+          </p>
+        </FadeIn>
+      </div>
+
+      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 mt-auto relative z-10">
+        <FadeIn delay={0.35} y={20}>
+          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[280px] md:max-w-[320px]" style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}>
+            {t.heroTagline}
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.5} y={20}>
+          <div className="flex items-center gap-3">
+            <ContactButton />
+            <a
+              href="https://t.me/olegdevyatow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-flex overflow-hidden rounded-full p-[1px] hover:scale-105 transition-transform duration-300"
+            >
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-gray-950 px-4 py-3 sm:px-5 sm:py-3.5 md:px-6 md:py-4 text-gray-50 backdrop-blur-3xl">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg>
+              </span>
+            </a>
+          </div>
+        </FadeIn>
+      </div>
+
+      <FadeIn delay={0.6} y={30}>
+        <div className="absolute left-1/2 -translate-x-1/2 z-0 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
+          <div className="relative">
+            <canvas
+              ref={canvasRef}
+              className="w-[448px] sm:w-[576px] md:w-[704px] lg:w-[832px]"
+              style={{ imageRendering: 'auto', opacity: 0.8, filter: 'blur(3px)' }}
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: `
+                  repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px),
+                  repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px)
+                `,
+                backgroundSize: '4px 4px'
+              }}
+            />
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+  );
+}
