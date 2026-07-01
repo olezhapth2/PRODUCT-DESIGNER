@@ -18,6 +18,7 @@ export default function AboutSection() {
         <AnimatedText
           text={t.aboutText}
           className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[600px] flex flex-wrap"
+          style={{ textAlign: 'justify', wordBreak: 'keep-all', overflowWrap: 'normal', hyphens: 'none' }}
         />
 
         <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
