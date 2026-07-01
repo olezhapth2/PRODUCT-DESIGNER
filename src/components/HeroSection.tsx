@@ -148,7 +148,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50" style={{ background: 'linear-gradient(to right, #000 0%, #000 20%, transparent 20%, transparent 80%, #000 80%, #000 100%)' }}>
+      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.8) 15%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 85%, #000 100%)' }}>
         <div className="hidden md:flex items-center gap-4">
           <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
             {t.heroName}
