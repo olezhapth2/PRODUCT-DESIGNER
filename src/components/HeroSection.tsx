@@ -258,26 +258,26 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      <div ref={headingRef} className="mt-20 sm:mt-16 relative z-20">
+      <div ref={headingRef} className="mt-20 sm:mt-16 relative z-20 w-full px-5 md:px-0">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
-            className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap"
+            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
             style={{ fontSize }}
           >
             {t.heroHeading}
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={30}>
-          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3 px-5" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2.5rem)' }}>
+          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>
             {t.heroName}
           </p>
         </FadeIn>
       </div>
 
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-5 md:px-10 mt-auto relative z-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pb-7 sm:pb-8 md:pb-10 px-5 md:px-10 mt-auto relative z-10">
         <FadeIn delay={0.35} y={20}>
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[280px] md:max-w-[320px]" style={{ fontSize: 'clamp(1.25rem, 1.4vw, 1.5rem)' }}>
+          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug md:max-w-[320px]" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)' }}>
             {t.heroTagline}
           </p>
         </FadeIn>
