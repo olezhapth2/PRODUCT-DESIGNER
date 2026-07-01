@@ -21,10 +21,15 @@ html, body, #root {
 .hero-heading {
   font-family: 'Dela Gothic One', sans-serif;
   color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: url(#liquid-glass) blur(0.5px);
-  -webkit-backdrop-filter: url(#liquid-glass) blur(0.5px);
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 768px) {
+  .hero-heading {
+    backdrop-filter: url(#liquid-glass) blur(0.5px);
+    -webkit-backdrop-filter: url(#liquid-glass) blur(0.5px);
+  }
 }
 
 .hero-canvas-wrap {

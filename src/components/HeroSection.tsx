@@ -26,7 +26,7 @@ export default function HeroSection() {
       requestAnimationFrame(() => {
         const textWidth = text.scrollWidth;
         if (textWidth > 0) {
-          const targetVw = 13 * (window.innerWidth / textWidth);
+          const targetVw = 14.3 * (window.innerWidth / textWidth);
           setFontSize(`${targetVw}vw`);
         }
       });
@@ -132,7 +132,7 @@ export default function HeroSection() {
       </svg>
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-[10px] md:px-10 pt-14 md:pt-14 text-center md:text-left">
+      <div ref={headingRef} className="relative z-20 w-full px-[10px] md:px-10 pt-[10px] md:pt-[20px] text-center md:text-left">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
