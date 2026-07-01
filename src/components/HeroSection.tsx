@@ -26,7 +26,7 @@ export default function HeroSection() {
       void el.offsetHeight;
       const measured = el.scrollWidth;
       if (measured <= 0) return;
-      const avail = container.clientWidth - 40;
+      const avail = container.clientWidth - (parseFloat(getComputedStyle(container).paddingLeft) + parseFloat(getComputedStyle(container).paddingRight));
       const px = (avail / measured) * parseFloat(getComputedStyle(el).fontSize);
       el.style.fontSize = `${(px / window.innerWidth) * 100}vw`;
     };
@@ -122,7 +122,7 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-visible">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
+      <div ref={headingRef} className="relative z-20 w-full px-1 md:px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
