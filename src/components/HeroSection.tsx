@@ -23,6 +23,7 @@ export default function HeroSection() {
     if (!el || !container) return;
     const fit = () => {
       el.style.fontSize = '10vw';
+      void el.offsetHeight;
       const measured = el.scrollWidth;
       if (measured <= 0) return;
       const avail = container.clientWidth - 40;

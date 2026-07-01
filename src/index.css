@@ -16,6 +16,7 @@ html {
 html, body, #root {
   background: #000000;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 .hero-heading {

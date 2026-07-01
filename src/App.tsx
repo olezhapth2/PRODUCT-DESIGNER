@@ -9,7 +9,7 @@ import FooterSection from './components/FooterSection';
 export default function App() {
   return (
     <LangProvider>
-      <div style={{ overflowX: 'clip' }}>
+      <div>
         <HeroSection />
         <MarqueeSection />
         <AboutSection />
