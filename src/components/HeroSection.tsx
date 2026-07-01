@@ -23,11 +23,13 @@ export default function HeroSection() {
       const text = textRef.current;
       if (!text) return;
       text.style.fontSize = '10vw';
-      const textWidth = text.scrollWidth;
-      if (textWidth > 0) {
-        const targetVw = 13 * (window.innerWidth / textWidth);
-        setFontSize(`${targetVw}vw`);
-      }
+      requestAnimationFrame(() => {
+        const textWidth = text.scrollWidth;
+        if (textWidth > 0) {
+          const targetVw = 13 * (window.innerWidth / textWidth);
+          setFontSize(`${targetVw}vw`);
+        }
+      });
     };
     document.fonts.ready.then(fit);
     fit();
@@ -121,7 +123,8 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-5 md:px-10 pt-14 md:pt-14">
+      {/* SINGLE heading - above nav */}
+      <div ref={headingRef} className="relative z-20 w-full px-[10px] md:px-10 pt-14 md:pt-14 text-center md:text-left">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
@@ -133,6 +136,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
+      {/* Nav */}
       <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50 bg-black/80 backdrop-blur-xl">
         <div className="hidden md:flex items-center gap-4">
           <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
@@ -256,18 +260,6 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      <div ref={headingRef} className="relative z-20 w-full px-5 md:px-10 pt-14 md:pt-14">
-        <FadeIn delay={0.15} y={40}>
-          <h1
-            ref={textRef}
-            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
-            style={{ fontSize }}
-          >
-            {t.heroHeading}
-          </h1>
-        </FadeIn>
-      </div>
-
       {/* Desktop: tagline left, buttons right */}
       <div className="hidden md:flex flex-row justify-between items-end gap-6 pb-10 px-10 mt-auto relative z-20">
         <FadeIn delay={0.35} y={20}>
@@ -318,7 +310,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      {/* Head animation: higher on mobile (22%), centered on desktop */}
+      {/* Head animation */}
       <div className="hero-canvas-wrap">
         <div className="relative">
           <canvas
