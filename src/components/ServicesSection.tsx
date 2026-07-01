@@ -37,26 +37,28 @@ export default function ServicesSection() {
 
               <AnimatePresence>
                 {hoveredIndex === i && (
-                  <motion.div
-                    className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 gap-3 z-20 pointer-events-none"
-                    initial={{ opacity: 0, x: 40, scale: 0.9 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: 40, scale: 0.9 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  >
-                    {[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i].map((icon, j) => (
-                      <motion.img
-                        key={icon}
-                        src={icon}
-                        alt=""
-                        className="w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] object-contain rounded-2xl"
-                        style={{ mixBlendMode: 'multiply' }}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: j * 0.1, duration: 0.3 }}
-                      />
-                    ))}
-                  </motion.div>
+                  <>
+                    <motion.img
+                      src={[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i][0]}
+                      alt=""
+                      className="hidden md:block absolute left-0 -bottom-6 w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px] object-contain pointer-events-none"
+                      style={{ mixBlendMode: 'multiply' }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <motion.img
+                      src={[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i][1]}
+                      alt=""
+                      className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] object-contain pointer-events-none"
+                      style={{ mixBlendMode: 'multiply' }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
+                    />
+                  </>
                 )}
               </AnimatePresence>
             </div>

@@ -188,8 +188,19 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
+            onClick={() => setMenuOpen(false)}
           >
-            <div className="flex flex-col items-center gap-5 mt-8">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="fixed top-3 right-5 md:right-10 z-[101] p-1 hover:scale-110 transition-transform"
+              aria-label="Close menu"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+            <div className="flex flex-col items-center gap-5 mt-8" onClick={(e) => e.stopPropagation()}>
               {t.nav.map((item, i) => {
                 const anchors = ['work', 'about', 'services', 'contact'];
                 return (
@@ -205,7 +216,7 @@ export default function HeroSection() {
               })}
             </div>
 
-            <div className="w-full max-w-xs flex flex-col items-center gap-3 mt-4">
+            <div className="w-full max-w-xs flex flex-col items-center gap-3 mt-4" onClick={(e) => e.stopPropagation()}>
               <a href="mailto:olegdevyatow@gmail.com" className={mobileBtnClass}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 Email
@@ -236,7 +247,7 @@ export default function HeroSection() {
               </a>
             </div>
 
-            <div className="flex items-center gap-2 mt-4">
+            <div className="flex items-center gap-2 mt-4" onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={() => { setLang('en'); setMenuOpen(false); }}
                 className={`px-4 py-2 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 ${lang === 'en' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
