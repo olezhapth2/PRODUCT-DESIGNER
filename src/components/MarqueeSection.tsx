@@ -25,10 +25,12 @@ const allDesktopRow2 = ['images/marquee/t.gif', 'images/marquee/y.gif', 'images/
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const row1Ref = useRef<HTMLDivElement>(null);
-  const row2Ref = useRef<HTMLDivElement>(null);
-  const row3Ref = useRef<HTMLDivElement>(null);
-  const row4Ref = useRef<HTMLDivElement>(null);
+  const desktopRow1Ref = useRef<HTMLDivElement>(null);
+  const desktopRow2Ref = useRef<HTMLDivElement>(null);
+  const mobileRow1Ref = useRef<HTMLDivElement>(null);
+  const mobileRow2Ref = useRef<HTMLDivElement>(null);
+  const mobileRow3Ref = useRef<HTMLDivElement>(null);
+  const mobileRow4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -49,13 +51,13 @@ export default function MarqueeSection() {
         const shift = offset - 200;
 
         if (isMobile) {
-          if (row1Ref.current) row1Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
-          if (row2Ref.current) row2Ref.current.style.transform = `translate3d(${-(shift)}px, 0, 0)`;
-          if (row3Ref.current) row3Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
-          if (row4Ref.current) row4Ref.current.style.transform = `translate3d(${-(shift)}px, 0, 0)`;
+          if (mobileRow1Ref.current) mobileRow1Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
+          if (mobileRow2Ref.current) mobileRow2Ref.current.style.transform = `translate3d(${-shift}px, 0, 0)`;
+          if (mobileRow3Ref.current) mobileRow3Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
+          if (mobileRow4Ref.current) mobileRow4Ref.current.style.transform = `translate3d(${-shift}px, 0, 0)`;
         } else {
-          if (row1Ref.current) row1Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
-          if (row2Ref.current) row2Ref.current.style.transform = `translate3d(${-(shift)}px, 0, 0)`;
+          if (desktopRow1Ref.current) desktopRow1Ref.current.style.transform = `translate3d(${shift}px, 0, 0)`;
+          if (desktopRow2Ref.current) desktopRow2Ref.current.style.transform = `translate3d(${-shift}px, 0, 0)`;
         }
 
         ticking = false;
@@ -81,12 +83,12 @@ export default function MarqueeSection() {
     <section ref={sectionRef} className="pt-8 sm:pt-12 md:pt-16 pb-10 relative z-[95]">
       {/* Desktop: 2 rows */}
       <div className="hidden md:block overflow-hidden">
-        <div ref={row1Ref} className="flex gap-3 items-center will-change-transform">
+        <div ref={desktopRow1Ref} className="flex gap-3 items-center will-change-transform">
           {desktopRow1.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
-        <div ref={row2Ref} className="flex gap-3 items-center mt-3 will-change-transform">
+        <div ref={desktopRow2Ref} className="flex gap-3 items-center mt-3 will-change-transform">
           {desktopRow2.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
@@ -95,22 +97,22 @@ export default function MarqueeSection() {
 
       {/* Mobile: 4 rows, bigger cards */}
       <div className="md:hidden overflow-hidden">
-        <div ref={row1Ref} className="flex gap-2 items-center will-change-transform">
+        <div ref={mobileRow1Ref} className="flex gap-2 items-center will-change-transform">
           {mobileRow1.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
-        <div ref={row2Ref} className="flex gap-2 items-center mt-2 will-change-transform">
+        <div ref={mobileRow2Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow2.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
-        <div ref={row3Ref} className="flex gap-2 items-center mt-2 will-change-transform">
+        <div ref={mobileRow3Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow3.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
-        <div ref={row4Ref} className="flex gap-2 items-center mt-2 will-change-transform">
+        <div ref={mobileRow4Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow4.map((src, i) => (
             <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
