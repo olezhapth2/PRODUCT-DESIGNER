@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../lib/i18n';
 import FadeIn from './FadeIn';
@@ -12,31 +12,36 @@ export default function HeroSection() {
   const headingRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [fontSize, setFontSize] = useState('10vw');
   const framesRef = useRef<HTMLImageElement[]>([]);
   const loadedRef = useRef(0);
   const currentFrameRef = useRef(0);
   const rafRef = useRef<number>(0);
 
-  useEffect(() => {
-    const fit = () => {
-      const text = textRef.current;
-      const container = headingRef.current;
-      if (!text || !container) return;
+  useLayoutEffect(() => {
+    const text = textRef.current;
+    const container = headingRef.current;
+    if (!text || !container) return;
+
+    const measure = () => {
+      const currentPx = parseFloat(getComputedStyle(text).fontSize);
       const measured = text.scrollWidth;
-      if (measured <= 0) return;
-      const currentPx = getComputedStyle(text).fontSize;
-      const currentSize = parseFloat(currentPx);
+      if (measured <= 0 || currentPx <= 0) return;
       const available = container.clientWidth - 40;
-      const scale = available / measured;
-      const targetPx = currentSize * scale * 0.97;
+      const targetPx = currentPx * (available / measured) * 0.97;
       const targetVw = (targetPx / window.innerWidth) * 100;
-      setFontSize(`${targetVw}vw`);
+      text.style.fontSize = `${targetVw}vw`;
     };
-    document.fonts.ready.then(fit);
-    fit();
-    window.addEventListener('resize', fit);
-    return () => window.removeEventListener('resize', fit);
+
+    document.fonts.ready.then(measure);
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    ro.observe(container);
+    window.addEventListener('resize', measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measure);
+    };
   }, [t.heroHeading, lang]);
 
   useEffect(() => {
@@ -130,7 +135,6 @@ export default function HeroSection() {
           <h1
             ref={textRef}
             className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
-            style={{ fontSize }}
           >
             {t.heroHeading}
           </h1>
