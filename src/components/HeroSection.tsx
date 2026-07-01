@@ -123,10 +123,14 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-clip">
       <svg style={{ display: 'none' }}>
         <defs>
-          <filter id="liquid-glass" x="-10%" y="-10%" width="120%" height="120%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="3" seed="2" result="noise" />
-            <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
-            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="25" xChannelSelector="R" yChannelSelector="G" />
+          <filter id="liquid-glass" x="-5%" y="-5%" width="110%" height="110%" colorInterpolationFilters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.025" numOctaves="2" seed="5" result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="1.5" result="blurredNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="18" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+            <feSpecularLighting in="blurredNoise" surfaceScale="3" specularConstant="0.8" specularExponent="25" result="specular">
+              <fePointLight x="50%" y="-20%" z="120" />
+            </feSpecularLighting>
+            <feComposite in="specular" in2="displaced" operator="arithmetic" k1="0" k2="1" k3="0.15" k4="0" />
           </filter>
         </defs>
       </svg>

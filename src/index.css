@@ -27,8 +27,8 @@ html, body, #root {
 
 @media (min-width: 768px) {
   .hero-heading {
-    backdrop-filter: url(#liquid-glass) blur(0.5px);
-    -webkit-backdrop-filter: url(#liquid-glass) blur(0.5px);
+    backdrop-filter: url(#liquid-glass);
+    -webkit-backdrop-filter: url(#liquid-glass);
   }
 }
 
