@@ -54,7 +54,9 @@ export default function MarqueeSection() {
         }
         const rect = sectionRef.current.getBoundingClientRect();
         const sectionTop = rect.top + window.scrollY;
-        const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+        const isMobile = window.innerWidth < 768;
+        const speed = isMobile ? 0.15 : 0.3;
+        const offset = (window.scrollY - sectionTop + window.innerHeight) * speed;
 
         row1Ref.current.style.transform = `translate3d(${offset - 200}px, 0, 0)`;
         row2Ref.current.style.transform = `translate3d(${-(offset - 200)}px, 0, 0)`;
@@ -77,25 +79,25 @@ export default function MarqueeSection() {
   return (
     <section ref={sectionRef} className="pt-24 sm:pt-32 md:pt-40 pb-10 relative z-[95]">
       <div className="overflow-hidden">
-        <div ref={row1Ref} className="flex gap-3 items-center will-change-transform">
+        <div ref={row1Ref} className="flex gap-2 md:gap-3 items-center will-change-transform">
           {tripledRow1.map((src, i) => (
             <img
               key={i}
               data-src={src}
               alt=""
-              className="w-[350px] sm:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
-              style={{ height: 'clamp(180px, 18vw, 270px)' }}
+              className="w-[42vw] sm:w-[350px] md:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
+              style={{ aspectRatio: '16/10' }}
             />
           ))}
         </div>
-        <div ref={row2Ref} className="flex gap-3 items-center mt-3 will-change-transform">
+        <div ref={row2Ref} className="flex gap-2 md:gap-3 items-center mt-2 md:mt-3 will-change-transform">
           {tripledRow2.map((src, i) => (
             <img
               key={i}
               data-src={src}
               alt=""
-              className="w-[350px] sm:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
-              style={{ height: 'clamp(180px, 18vw, 270px)' }}
+              className="w-[42vw] sm:w-[350px] md:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
+              style={{ aspectRatio: '16/10' }}
             />
           ))}
         </div>

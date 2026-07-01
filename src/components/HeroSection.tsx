@@ -88,7 +88,9 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen flex flex-col overflow-x-clip">
-      <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 pb-4 fixed top-0 left-0 right-0 z-50" style={{ mixBlendMode: 'difference' }}>
+      <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
+
+      <nav className="flex justify-between items-center px-5 md:px-10 pt-5 md:pt-8 pb-4 fixed top-0 left-0 right-0 z-50">
         <div className="hidden md:flex items-center gap-6 md:gap-10">
           {t.nav.map((item, i) => {
             const anchors = ['work', 'about', 'services', 'contact'];
@@ -121,9 +123,14 @@ export default function HeroSection() {
               Ru
             </button>
           </div>
+        </div>
+        <div className="flex md:hidden items-center gap-3">
+          <a href="#contact" className="text-white font-medium uppercase tracking-wider text-xs blink-subtle">
+            {t.letsTalk}
+          </a>
           <button
             onClick={() => setMenuOpen(true)}
-            className="md:hidden bg-black p-2 rounded-lg"
+            className="p-1"
             aria-label="Open menu"
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -138,15 +145,15 @@ export default function HeroSection() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center gap-8 px-6 md:hidden overflow-y-auto"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-start gap-8 px-6 pt-24 pb-10 md:hidden overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
             <button
               onClick={() => setMenuOpen(false)}
-              className="absolute top-6 right-6 bg-black p-2 rounded-lg"
+              className="fixed top-5 right-5 z-[70] p-2"
               aria-label="Close menu"
             >
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -231,20 +238,20 @@ export default function HeroSection() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={30}>
-          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3 px-5" style={{ fontSize: 'clamp(1rem, 2.5vw, 2.5rem)' }}>
+          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3 px-5" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2.5rem)' }}>
             {t.heroName}
           </p>
         </FadeIn>
       </div>
 
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 mt-auto relative z-10">
+      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-5 md:px-10 mt-auto relative z-10">
         <FadeIn delay={0.35} y={20}>
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[280px] md:max-w-[320px]" style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}>
+          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[280px] md:max-w-[320px]" style={{ fontSize: 'clamp(1.25rem, 1.4vw, 1.5rem)' }}>
             {t.heroTagline}
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <ContactButton />
             <a
               href="https://t.me/olegdevyatow"
@@ -261,27 +268,25 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <FadeIn delay={0.6} y={30}>
-        <div className="absolute left-1/2 -translate-x-1/2 z-0 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
-          <div className="relative">
-            <canvas
-              ref={canvasRef}
-              className="w-[448px] sm:w-[576px] md:w-[704px] lg:w-[832px]"
-              style={{ imageRendering: 'auto', opacity: 0.8, filter: 'blur(3px)' }}
-            />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px),
-                  repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px)
-                `,
-                backgroundSize: '4px 4px'
-              }}
-            />
-          </div>
+      <div className="absolute left-1/2 -translate-x-1/2 z-0 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
+        <div className="relative">
+          <canvas
+            ref={canvasRef}
+            className="w-[448px] sm:w-[576px] md:w-[704px] lg:w-[832px]"
+            style={{ imageRendering: 'auto', opacity: 0.8, filter: 'blur(3px)' }}
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `
+                repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px)
+              `,
+              backgroundSize: '4px 4px'
+            }}
+          />
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }
