@@ -173,15 +173,22 @@ export default function HeroSection() {
             </button>
           </div>
           <button
-            onClick={() => setMenuOpen(true)}
+            onClick={() => setMenuOpen(!menuOpen)}
             className="p-1 hover:scale-110 transition-transform"
-            aria-label="Open menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
+            {menuOpen ? (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            ) : (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            )}
           </button>
         </div>
       </nav>
@@ -189,24 +196,13 @@ export default function HeroSection() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-start gap-8 px-6 pt-24 pb-10 overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex flex-col items-center justify-start gap-8 px-6 pt-24 pb-10 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="fixed top-5 right-5 z-[110] p-2"
-              aria-label="Close menu"
-            >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D7E2EA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-
-            <div className="flex flex-col items-center gap-5">
+            <div className="flex flex-col items-center gap-5 mt-8">
               {t.nav.map((item, i) => {
                 const anchors = ['work', 'about', 'services', 'contact'];
                 return (
