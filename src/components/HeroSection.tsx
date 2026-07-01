@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../lib/i18n';
 import FadeIn from './FadeIn';
@@ -10,39 +10,11 @@ const FRAME_PATH = 'frames/frame-';
 export default function HeroSection() {
   const { lang, setLang, t } = useLang();
   const headingRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const loadedRef = useRef(0);
   const currentFrameRef = useRef(0);
   const rafRef = useRef<number>(0);
-
-  useLayoutEffect(() => {
-    const text = textRef.current;
-    const container = headingRef.current;
-    if (!text || !container) return;
-
-    const measure = () => {
-      const currentPx = parseFloat(getComputedStyle(text).fontSize);
-      const measured = text.scrollWidth;
-      if (measured <= 0 || currentPx <= 0) return;
-      const available = container.clientWidth - 40;
-      const targetPx = currentPx * (available / measured) * 0.97;
-      const targetVw = (targetPx / window.innerWidth) * 100;
-      text.style.fontSize = `${targetVw}vw`;
-    };
-
-    document.fonts.ready.then(measure);
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(container);
-    window.addEventListener('resize', measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', measure);
-    };
-  }, [t.heroHeading, lang]);
 
   useEffect(() => {
     const images: HTMLImageElement[] = [];
@@ -133,8 +105,7 @@ export default function HeroSection() {
       <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
         <FadeIn delay={0.15} y={40}>
           <h1
-            ref={textRef}
-            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
+            className="hero-heading font-black uppercase tracking-tight leading-none"
           >
             {t.heroHeading}
           </h1>

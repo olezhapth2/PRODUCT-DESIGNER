@@ -20,7 +20,9 @@ html, body, #root {
 
 .hero-heading {
   font-family: 'Dela Gothic One', sans-serif;
-  font-size: 10vw;
+  font-size: 13.5vw;
+  width: 100%;
+  display: block;
   background: linear-gradient(180deg, #ffffff 0%, #b0b0b0 100%);
   -webkit-background-clip: text;
   background-clip: text;
