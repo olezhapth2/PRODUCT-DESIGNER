@@ -25,7 +25,7 @@ export default function HeroSection() {
       text.style.fontSize = '10vw';
       const textWidth = text.scrollWidth;
       if (textWidth > 0) {
-        const targetVw = 10 * (window.innerWidth / textWidth);
+        const targetVw = 13 * (window.innerWidth / textWidth);
         setFontSize(`${targetVw}vw`);
       }
     };
