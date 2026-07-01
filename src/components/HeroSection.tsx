@@ -123,20 +123,6 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      {/* SINGLE heading - above nav */}
-      <div ref={headingRef} className="relative z-20 w-full px-[10px] md:px-10 pt-14 md:pt-14 text-center md:text-left">
-        <FadeIn delay={0.15} y={40}>
-          <h1
-            ref={textRef}
-            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
-            style={{ fontSize }}
-          >
-            {t.heroHeading}
-          </h1>
-        </FadeIn>
-      </div>
-
-      {/* Nav */}
       <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50 bg-black/80 backdrop-blur-xl">
         <div className="hidden md:flex items-center gap-4">
           <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
