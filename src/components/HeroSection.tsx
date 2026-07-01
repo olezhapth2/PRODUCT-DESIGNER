@@ -119,7 +119,7 @@ export default function HeroSection() {
   const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
   return (
-    <section className="relative h-screen flex flex-col overflow-x-visible pt-14">
+    <section className="relative h-screen flex flex-col overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
       <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
@@ -133,7 +133,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <nav className="flex justify-between items-center px-5 md:px-10 py-3 fixed top-0 left-0 right-0 z-50" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.8) 15%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 85%, #000 100%)' }}>
+      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.8) 15%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 85%, #000 100%)' }}>
         <div className="hidden md:flex items-center gap-4">
           <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
             {t.heroName}
