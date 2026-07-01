@@ -23,15 +23,15 @@ export default function HeroSection() {
       const text = textRef.current;
       const container = headingRef.current;
       if (!text || !container) return;
-      text.style.fontSize = '10vw';
-      requestAnimationFrame(() => {
-        const textWidth = text.scrollWidth;
-        if (textWidth > 0) {
-          const availableWidth = container.clientWidth - 40;
-          const targetVw = 10 * (availableWidth / textWidth);
-          setFontSize(`${targetVw}vw`);
-        }
-      });
+      const measured = text.scrollWidth;
+      if (measured <= 0) return;
+      const currentPx = getComputedStyle(text).fontSize;
+      const currentSize = parseFloat(currentPx);
+      const available = container.clientWidth - 40;
+      const scale = available / measured;
+      const targetPx = currentSize * scale * 0.97;
+      const targetVw = (targetPx / window.innerWidth) * 100;
+      setFontSize(`${targetVw}vw`);
     };
     document.fonts.ready.then(fit);
     fit();
@@ -122,10 +122,10 @@ export default function HeroSection() {
   const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
   return (
-    <section className="relative h-screen flex flex-col overflow-x-clip">
+    <section className="relative h-screen flex flex-col overflow-x-visible">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left">
+      <div ref={headingRef} className="relative z-20 w-full px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
