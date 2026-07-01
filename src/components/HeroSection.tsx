@@ -258,7 +258,7 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      <div ref={headingRef} className="mt-20 sm:mt-16 relative z-20 w-full px-5 md:px-0">
+      <div ref={headingRef} className="mt-16 sm:mt-16 relative z-20 w-full px-5 md:px-10">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
@@ -269,15 +269,15 @@ export default function HeroSection() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={30}>
-          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>
+          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.25rem, 3vw, 2.5rem)' }}>
             {t.heroName}
           </p>
         </FadeIn>
       </div>
 
-      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pb-7 sm:pb-8 md:pb-10 px-5 md:px-10 mt-auto relative z-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 pb-7 sm:pb-8 md:pb-10 px-5 md:px-10 mt-auto relative z-20">
         <FadeIn delay={0.35} y={20}>
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug md:max-w-[320px]" style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)' }}>
+          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug md:max-w-[320px]" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.5rem)' }}>
             {t.heroTagline}
           </p>
         </FadeIn>
@@ -299,7 +299,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 z-0 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-[30%] sm:top-[25%] md:top-1/2 md:-translate-y-1/2">
         <div className="relative">
           <canvas
             ref={canvasRef}
