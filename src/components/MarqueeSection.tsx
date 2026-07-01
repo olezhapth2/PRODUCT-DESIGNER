@@ -34,23 +34,6 @@ export default function MarqueeSection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    let isVisible = false;
-    const imgs = section.querySelectorAll<HTMLImageElement>('img');
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        imgs.forEach((img) => {
-          if (isVisible && img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-          }
-        });
-      },
-      { rootMargin: '200px' }
-    );
-    observer.observe(section);
-
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;
@@ -82,7 +65,6 @@ export default function MarqueeSection() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => {
-      observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -96,17 +78,17 @@ export default function MarqueeSection() {
   const mobileRow4 = [...row4Images, ...row4Images, ...row4Images, ...row4Images];
 
   return (
-    <section ref={sectionRef} className="pt-24 sm:pt-32 md:pt-40 pb-10 relative z-[95]">
+    <section ref={sectionRef} className="pt-8 sm:pt-12 md:pt-16 pb-10 relative z-[95]">
       {/* Desktop: 2 rows */}
       <div className="hidden md:block overflow-hidden">
         <div ref={row1Ref} className="flex gap-3 items-center will-change-transform">
           {desktopRow1.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={row2Ref} className="flex gap-3 items-center mt-3 will-change-transform">
           {desktopRow2.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
       </div>
@@ -115,22 +97,22 @@ export default function MarqueeSection() {
       <div className="md:hidden overflow-hidden">
         <div ref={row1Ref} className="flex gap-2 items-center will-change-transform">
           {mobileRow1.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={row2Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow2.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={row3Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow3.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={row4Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow4.map((src, i) => (
-            <img key={i} data-src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
       </div>

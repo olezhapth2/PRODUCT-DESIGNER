@@ -121,17 +121,29 @@ export default function HeroSection() {
     <section className="relative h-screen flex flex-col overflow-x-clip">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <nav className="flex justify-between items-center px-5 md:px-10 pt-5 md:pt-8 pb-4 fixed top-0 left-0 right-0 z-50">
-        <div className="flex items-center gap-4">
-          <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity bg-black px-2 py-1">
+      <div ref={headingRef} className="relative z-20 w-full px-5 md:px-10 pt-14 md:pt-14">
+        <FadeIn delay={0.15} y={40}>
+          <h1
+            ref={textRef}
+            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
+            style={{ fontSize }}
+          >
+            {t.heroHeading}
+          </h1>
+        </FadeIn>
+      </div>
+
+      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-50 bg-black/80 backdrop-blur-xl">
+        <div className="hidden md:flex items-center gap-4">
+          <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
             {t.heroName}
           </a>
         </div>
-        <div className="flex items-center gap-4">
-          <a href="#contact" className="text-white font-medium uppercase tracking-wider text-xs md:text-sm blink-subtle bg-black px-3 py-1">
+        <div className="flex items-center gap-4 ml-auto">
+          <a href="#contact" className="text-white font-medium uppercase tracking-wider text-xs md:text-sm blink-subtle">
             {t.letsTalk}
           </a>
-          <div className="flex items-center gap-1 bg-black rounded-full p-1">
+          <div className="flex items-center gap-1 bg-white/10 rounded-full p-1">
             <button
               onClick={() => setLang('en')}
               className={`px-3 py-1 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-200 hover:scale-105 ${lang === 'en' ? 'text-white bg-white/10' : 'text-[#D7E2EA]/50 hover:text-[#D7E2EA]'}`}
@@ -255,7 +267,7 @@ export default function HeroSection() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={30}>
-          <p className="text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.25rem, 3vw, 2.5rem)' }}>
+          <p className="hidden md:block text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.25rem, 3vw, 2.5rem)' }}>
             {t.heroName}
           </p>
         </FadeIn>
@@ -316,7 +328,7 @@ export default function HeroSection() {
         <div className="relative">
           <canvas
             ref={canvasRef}
-            className="w-[85vw] sm:w-[576px] md:w-[704px] lg:w-[832px]"
+            className="w-[93vw] sm:w-[576px] md:w-[704px] lg:w-[832px]"
             style={{ imageRendering: 'auto', opacity: 0.8, filter: 'blur(3px)' }}
           />
           <div
