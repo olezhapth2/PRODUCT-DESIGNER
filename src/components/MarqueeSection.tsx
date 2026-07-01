@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-// Row 1: q, w, e, r
 const row1Images = [
   'images/marquee/q.gif',
   'images/marquee/w.gif',
@@ -8,7 +7,6 @@ const row1Images = [
   'images/marquee/r.gif',
 ];
 
-// Row 2: t, y, u, i
 const row2Images = [
   'images/marquee/t.gif',
   'images/marquee/y.gif',
@@ -55,7 +53,7 @@ export default function MarqueeSection() {
         const rect = sectionRef.current.getBoundingClientRect();
         const sectionTop = rect.top + window.scrollY;
         const isMobile = window.innerWidth < 768;
-        const speed = isMobile ? 0.15 : 0.3;
+        const speed = isMobile ? 0.12 : 0.3;
         const offset = (window.scrollY - sectionTop + window.innerHeight) * speed;
 
         row1Ref.current.style.transform = `translate3d(${offset - 200}px, 0, 0)`;
@@ -73,8 +71,8 @@ export default function MarqueeSection() {
     };
   }, []);
 
-  const tripledRow1 = [...row1Images, ...row1Images, ...row1Images];
-  const tripledRow2 = [...row2Images, ...row2Images, ...row2Images];
+  const tripledRow1 = [...row1Images, ...row1Images, ...row1Images, ...row1Images];
+  const tripledRow2 = [...row2Images, ...row2Images, ...row2Images, ...row2Images];
 
   return (
     <section ref={sectionRef} className="pt-24 sm:pt-32 md:pt-40 pb-10 relative z-[95]">
@@ -85,7 +83,7 @@ export default function MarqueeSection() {
               key={i}
               data-src={src}
               alt=""
-              className="w-[42vw] sm:w-[350px] md:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
+              className="w-[23vw] min-w-[23vw] sm:w-[350px] md:w-[420px] rounded-xl md:rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
               style={{ aspectRatio: '16/10' }}
             />
           ))}
@@ -96,7 +94,7 @@ export default function MarqueeSection() {
               key={i}
               data-src={src}
               alt=""
-              className="w-[42vw] sm:w-[350px] md:w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
+              className="w-[23vw] min-w-[23vw] sm:w-[350px] md:w-[420px] rounded-xl md:rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]"
               style={{ aspectRatio: '16/10' }}
             />
           ))}

@@ -75,14 +75,45 @@ export default function HeroSection() {
       });
     };
 
+    const handleOrientation = (e: DeviceOrientationEvent) => {
+      if (e.gamma === null) return;
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        const x = Math.max(0, Math.min(1, (e.gamma! + 45) / 90));
+        const frame = Math.min(TOTAL_FRAMES - 1, Math.floor(x * TOTAL_FRAMES));
+        if (frame !== currentFrameRef.current) {
+          currentFrameRef.current = frame;
+          drawFrame(frame);
+        }
+      });
+    };
+
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+      (DeviceOrientationEvent as any).requestPermission().then((state: string) => {
+        if (state === 'granted') window.addEventListener('deviceorientation', handleOrientation);
+      }).catch(() => {});
+    } else {
+      window.addEventListener('deviceorientation', handleOrientation);
+    }
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('deviceorientation', handleOrientation);
       cancelAnimationFrame(rafRef.current);
     };
   }, [drawFrame]);
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
@@ -145,7 +176,7 @@ export default function HeroSection() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-start gap-8 px-6 pt-24 pb-10 md:hidden overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-start gap-8 px-6 pt-24 pb-10 md:hidden overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
