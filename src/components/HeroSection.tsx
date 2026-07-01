@@ -282,7 +282,7 @@ export default function HeroSection() {
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <ContactButton />
             <a
               href="https://t.me/olegdevyatow"
