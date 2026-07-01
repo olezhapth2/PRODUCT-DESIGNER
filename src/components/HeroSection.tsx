@@ -256,20 +256,15 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      <div ref={headingRef} className="mt-16 sm:mt-16 relative z-20 w-full px-5 md:px-10">
+      <div ref={headingRef} className="relative z-20 w-full px-5 md:px-10 pt-14 md:pt-14">
         <FadeIn delay={0.15} y={40}>
           <h1
             ref={textRef}
-            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap relative hero-glass"
+            className="hero-heading font-black uppercase tracking-tight leading-none md:whitespace-nowrap"
             style={{ fontSize }}
           >
             {t.heroHeading}
           </h1>
-        </FadeIn>
-        <FadeIn delay={0.25} y={30}>
-          <p className="hidden md:block text-[#D7E2EA] font-medium uppercase tracking-wider mt-3" style={{ fontSize: 'clamp(1.25rem, 3vw, 2.5rem)' }}>
-            {t.heroName}
-          </p>
         </FadeIn>
       </div>
 
