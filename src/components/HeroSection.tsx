@@ -123,9 +123,7 @@ export default function HeroSection({ preloaderDone = true }: { preloaderDone?: 
 
 
   return (
-    <section className="relative h-screen flex flex-col overflow-x-visible pt-12 md:pt-0">
-      <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
-
+    <section className="relative h-screen flex flex-col overflow-x-visible">
       <div className="relative z-20 w-full px-1 text-center md:text-left overflow-visible">
           <motion.h1
             ref={textRef}
