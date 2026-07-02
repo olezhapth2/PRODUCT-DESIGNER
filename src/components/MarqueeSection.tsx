@@ -85,12 +85,12 @@ export default function MarqueeSection() {
       <div className="hidden md:block overflow-hidden">
         <div ref={desktopRow1Ref} className="flex gap-3 items-center will-change-transform">
           {desktopRow1.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={desktopRow2Ref} className="flex gap-3 items-center mt-3 will-change-transform">
           {desktopRow2.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[420px] rounded-2xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
       </div>
@@ -99,22 +99,22 @@ export default function MarqueeSection() {
       <div className="md:hidden overflow-hidden">
         <div ref={mobileRow1Ref} className="flex gap-2 items-center will-change-transform">
           {mobileRow1.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={mobileRow2Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow2.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={mobileRow3Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow3.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
         <div ref={mobileRow4Ref} className="flex gap-2 items-center mt-2 will-change-transform">
           {mobileRow4.map((src, i) => (
-            <img key={i} src={src} alt="" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
+            <img key={i} src={src} alt="" loading="lazy" className="w-[45vw] min-w-[45vw] rounded-xl object-cover flex-shrink-0 bg-[#1a1a1a]" style={{ aspectRatio: '16/10' }} />
           ))}
         </div>
       </div>

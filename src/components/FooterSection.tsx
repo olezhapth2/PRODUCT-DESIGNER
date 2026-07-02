@@ -98,7 +98,7 @@ export default function FooterSection() {
               className="rounded-2xl overflow-hidden border border-[#D7E2EA]/10 cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
               onClick={() => setPopupSrc('aimimo.png')}
             >
-              <img src="aimimo.png" alt="" className="w-full block" />
+              <img src="aimimo.png" alt="" className="w-full block" loading="lazy" />
             </div>
             <p className="text-[#D7E2EA]/40 text-xs text-center">
               {t.footerCardCaption}

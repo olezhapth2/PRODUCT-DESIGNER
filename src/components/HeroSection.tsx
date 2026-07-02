@@ -7,7 +7,7 @@ import ContactButton from './ContactButton';
 const TOTAL_FRAMES = 119;
 const FRAME_PATH = 'frames/frame-';
 
-export default function HeroSection() {
+export default function HeroSection({ preloaderDone = true }: { preloaderDone?: boolean }) {
   const { lang, setLang, t } = useLang();
   const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,9 +41,12 @@ export default function HeroSection() {
 
   useEffect(() => {
     const images: HTMLImageElement[] = [];
+    const BATCH = 30;
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
-      img.src = `${FRAME_PATH}${String(i).padStart(3, '0')}.jpg`;
+      if (i <= BATCH) {
+        img.src = `${FRAME_PATH}${String(i).padStart(3, '0')}.jpg`;
+      }
       img.onload = () => {
         loadedRef.current++;
         if (loadedRef.current === 1) drawFrame(0);
@@ -51,6 +54,16 @@ export default function HeroSection() {
       images.push(img);
     }
     framesRef.current = images;
+
+    const loadRest = () => {
+      for (let i = BATCH; i < TOTAL_FRAMES; i++) {
+        if (!images[i].src) {
+          images[i].src = `${FRAME_PATH}${String(i + 1).padStart(3, '0')}.jpg`;
+        }
+      }
+    };
+    const timer = setTimeout(loadRest, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   const drawFrame = useCallback((index: number) => {
@@ -122,18 +135,19 @@ export default function HeroSection() {
   const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
   return (
-    <section className="relative h-screen flex flex-col overflow-x-visible pt-14">
+    <section className="relative h-screen flex flex-col overflow-x-visible">
       <div className="absolute top-0 left-0 right-0 h-32 z-40 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #000 0%, transparent 100%)' }} />
 
-      <div className="relative z-20 w-full px-1 md:px-5 pt-[10px] md:pt-[20px] text-center md:text-left overflow-visible">
-        <FadeIn delay={0.15} y={40}>
-          <h1
+      <div className="relative z-20 w-full px-1 text-center md:text-left overflow-visible">
+          <motion.h1
             ref={textRef}
             className="hero-heading font-black uppercase tracking-tight leading-none"
+            initial={{ opacity: 0, y: 30 }}
+            animate={preloaderDone ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
             {t.heroHeading}
-          </h1>
-        </FadeIn>
+          </motion.h1>
       </div>
 
       <nav className="flex justify-between items-center px-5 md:px-10 py-3 fixed top-0 left-0 right-0 w-full z-50" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.8) 15%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 85%, #000 100%)' }}>
@@ -317,7 +331,7 @@ export default function HeroSection() {
       </div>
 
       {/* Head animation */}
-      <div className="hero-canvas-wrap">
+      <div className="hero-canvas-wrap" style={{ opacity: preloaderDone ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}>
         <div className="relative">
           <canvas
             ref={canvasRef}

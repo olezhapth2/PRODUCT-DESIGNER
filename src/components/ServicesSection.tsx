@@ -3,6 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../lib/i18n';
 import FadeIn from './FadeIn';
 
+const iconPairs: [string, string][] = [
+  ['images/icons/rocket.png', 'images/icons/pencil.png'],
+  ['images/icons/loud-speaker.png', 'images/icons/coffee.png'],
+  ['images/icons/crowned.png', 'images/icons/outlet.png'],
+  ['images/icons/clapperboard.png', 'images/icons/spary.png'],
+  ['images/icons/magic.png', 'images/icons/rotten.png'],
+];
+
 export default function ServicesSection() {
   const { t } = useLang();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -39,7 +47,7 @@ export default function ServicesSection() {
                 {hoveredIndex === i && (
                   <>
                     <motion.img
-                      src={[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i][0]}
+                      src={iconPairs[i][0]}
                       alt=""
                       className="hidden md:block absolute left-0 -bottom-6 w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px] object-contain pointer-events-none"
                       style={{ mixBlendMode: 'multiply' }}
@@ -49,7 +57,7 @@ export default function ServicesSection() {
                       transition={{ duration: 0.3 }}
                     />
                     <motion.img
-                      src={[['images/icons/rocket.png', 'images/icons/pencil.png'], ['images/icons/loud-speaker.png', 'images/icons/coffee.png'], ['images/icons/crowned.png', 'images/icons/outlet.png'], ['images/icons/clapperboard.png', 'images/icons/spary.png'], ['images/icons/magic.png', 'images/icons/rotten.png']][i][1]}
+                      src={iconPairs[i][1]}
                       alt=""
                       className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] object-contain pointer-events-none"
                       style={{ mixBlendMode: 'multiply' }}
