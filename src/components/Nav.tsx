@@ -108,7 +108,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-[100] w-full" style={{ background: 'linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.85) 60%, transparent 100%)' }}>
+      <nav className="flex justify-between items-center px-5 md:px-10 py-3 sticky top-0 z-[100] w-full" style={{ background: 'linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%)' }}>
         <div className="hidden md:flex items-center gap-4">
           <a href="#" className="text-white font-medium uppercase tracking-wider text-sm md:text-base lg:text-lg hover:opacity-70 transition-opacity">
             {t.heroName}
