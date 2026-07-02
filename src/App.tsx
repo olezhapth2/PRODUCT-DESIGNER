@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LangProvider, useLang } from './lib/i18n';
+import Nav from './components/Nav';
 import HeroSection from './components/HeroSection';
 import MarqueeSection from './components/MarqueeSection';
 import AboutSection from './components/AboutSection';
@@ -16,6 +17,7 @@ function AppInner() {
     <>
       {loading && <Preloader onComplete={() => setLoading(false)} heading={t.heroHeading} />}
       <div style={{ overflowX: 'clip' }}>
+        <Nav />
         <HeroSection preloaderDone={!loading} />
         <MarqueeSection />
         <AboutSection />

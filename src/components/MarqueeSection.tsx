@@ -80,7 +80,7 @@ export default function MarqueeSection() {
   const mobileRow4 = [...row4Images, ...row4Images, ...row4Images, ...row4Images];
 
   return (
-    <section ref={sectionRef} className="pt-8 sm:pt-12 md:pt-16 pb-10 relative z-[95]">
+    <section ref={sectionRef} className="pt-8 sm:pt-12 md:pt-16 pb-10 relative">
       {/* Desktop: 2 rows */}
       <div className="hidden md:block overflow-hidden">
         <div ref={desktopRow1Ref} className="flex gap-3 items-center will-change-transform">

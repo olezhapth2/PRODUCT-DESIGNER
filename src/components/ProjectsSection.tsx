@@ -147,7 +147,7 @@ export default function ProjectsSection() {
     <section
       ref={sectionRef}
       id="work"
-      className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-[95] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
+      className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
       style={{ background: 'transparent' }}
     >
       <FadeIn>

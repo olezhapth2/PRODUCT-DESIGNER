@@ -42,7 +42,7 @@ export default function FooterSection() {
   const [popupSrc, setPopupSrc] = useState<string | null>(null);
 
   return (
-    <footer id="contact" className="py-20 sm:py-24 md:py-32 relative z-[95]">
+    <footer id="contact" className="py-20 sm:py-24 md:py-32 relative">
       <div className="w-full px-5 mb-12 sm:mb-16 md:mb-20">
         <FadeIn>
           <h2 className="hero-heading font-black uppercase text-center leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 9vw, 130px)' }}>

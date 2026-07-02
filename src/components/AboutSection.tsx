@@ -7,7 +7,7 @@ export default function AboutSection() {
   const { t } = useLang();
 
   return (
-    <section id="about" className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 relative overflow-hidden z-[95]">
+    <section id="about" className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 relative overflow-hidden">
       <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 z-10">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center" style={{ fontSize: 'clamp(2.5rem, 9vw, 130px)' }}>
