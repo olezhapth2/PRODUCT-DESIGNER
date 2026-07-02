@@ -8,7 +8,7 @@ const TOTAL_FRAMES = 119;
 const FRAME_PATH = 'frames/frame-';
 
 export default function HeroSection({ preloaderDone = true }: { preloaderDone?: boolean }) {
-  const { lang, setLang, t } = useLang();
+  const { lang, t } = useLang();
   const textRef = useRef<HTMLHeadingElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
@@ -121,7 +121,6 @@ export default function HeroSection({ preloaderDone = true }: { preloaderDone?: 
     };
   }, [drawFrame]);
 
-  const mobileBtnClass = "inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 hover:scale-105 transition-all duration-300 px-6 py-3 text-sm w-full";
 
   return (
     <section className="relative h-screen flex flex-col overflow-x-visible pt-[72px] md:pt-0">
