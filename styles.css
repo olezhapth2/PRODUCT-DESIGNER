@@ -274,6 +274,9 @@ button { font: inherit; }
 .content .timeline-date { font-family: var(--mono); font-size: var(--fs-cap); color: var(--text-dim); margin-bottom: var(--s-2); }
 .timeline h3 { font-size: var(--fs-body); font-weight: 600; margin-bottom: var(--s-3); line-height: 1.4; }
 .timeline p:last-child { margin-bottom: 0; }
+.experience-project + .experience-project { margin-top: var(--s-4); padding-top: var(--s-4); border-top: var(--edge-width) solid var(--line); }
+.timeline-projects .experience-project h3 { margin-bottom: var(--s-2); }
+.timeline-projects .experience-project p { margin-bottom: 0; }
 .resume-note { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-3); font-size: var(--fs-sm); }
 .skills-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
 .skills-list > div { padding: var(--s-5); border: var(--edge-width) solid var(--line); border-radius: var(--r-md); background: var(--bg); }
