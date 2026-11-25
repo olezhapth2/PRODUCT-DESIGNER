@@ -212,6 +212,8 @@ button { font: inherit; }
 .masthead a:hover { color: var(--link-ink); }
 .masthead .masthead-name { color: var(--text); font-weight: 600; white-space: nowrap; }
 .masthead nav { display: flex; align-items: center; gap: var(--s-5); }
+.masthead .masthead-contact { color: var(--text); font-weight: 700; }
+.masthead-contact .ui-icon { width: var(--icon-small); height: var(--icon-small); color: var(--text); }
 .hero-bio { margin-bottom: var(--s-5); }
 .availability { display: flex; align-items: center; gap: var(--s-2); font-size: var(--fs-sm); }
 .status-dot { display: inline-block; flex: 0 0 auto; width: var(--s-2); height: var(--s-2); border-radius: 50%; background: var(--acc); }
