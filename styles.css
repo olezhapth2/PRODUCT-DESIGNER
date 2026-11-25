@@ -248,7 +248,8 @@ button { font: inherit; }
 .image-original .ui-icon { width: var(--icon-small); height: var(--icon-small); }
 .case-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-5); max-width: calc(var(--page-width) + var(--s-9)); margin-block: var(--s-4) var(--s-5); }
 .case-heading h3 { font-size: var(--fs-display); font-weight: 650; line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
-.case-heading h3 a { color: var(--text); text-decoration: none; }
+.case-heading h3 a { color: var(--text); text-decoration: none; align-items: flex-start; }
+.case-heading h3 .ui-icon { width: .78em; height: .78em; margin-top: .11em; color: var(--link-ink); }
 .case-heading h3 a:hover { color: var(--link-ink); }
 .case-index { flex: 0 0 auto; padding: var(--s-1) var(--s-2); border: var(--edge-width) solid var(--line); border-radius: var(--r-md); color: var(--text-dim); font-family: var(--mono); font-size: var(--fs-cap); }
 .content .case-meta { color: var(--text-dim); font-family: var(--mono); font-size: var(--fs-cap); line-height: 1.5; }
