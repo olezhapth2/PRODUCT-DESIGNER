@@ -299,23 +299,36 @@ button { font: inherit; }
 .rv { opacity: 1; transform: none; }
 .js-motion .rv:not(.in) { opacity: 0; transform: translateY(var(--s-4)); }
 .js-motion .rv.in { opacity: 1; transform: none; }
-.case-page .offer-title { overflow-wrap: break-word; }
-.case-page .case-meta { margin-bottom: var(--s-4); }
+.case-page .content { counter-reset: case-chapter; }
+.case-page .resume-header { width: min(var(--media-width), calc(100vw - var(--s-7))); margin-inline: calc((100% - min(var(--media-width), calc(100vw - var(--s-7)))) / 2); padding: var(--s-7); border-radius: var(--r-lg); background: var(--text); color: var(--bg); }
+.case-page .resume-header .offer-title { color: var(--bg); overflow-wrap: break-word; }
+.case-page .resume-header .case-meta, .case-page .resume-header .pitch, .case-page .resume-header .case-role { color: var(--bg); }
+.case-page .resume-header .case-meta { margin-bottom: var(--s-4); opacity: .72; }
+.case-page .resume-header .case-back { margin-bottom: var(--s-6); }
+.case-page .resume-header .case-back a { color: var(--bg); text-decoration-color: var(--bg); }
+.case-page .resume-header .case-back .ui-icon { color: var(--acc); }
+.case-page .resume-header .case-tags li { color: var(--bg); border-color: var(--text-dim); }
 .content .case-role { align-items: flex-start; padding-left: var(--s-4); border-left: var(--focus-width) solid var(--acc); margin-block: var(--s-5) var(--s-6); color: var(--text-2); font-size: var(--fs-sm); }
 .case-page .case-tags { margin-bottom: var(--s-5); }
 .case-page .label { font-size: var(--fs-lead); font-weight: 600; line-height: 1.35; color: var(--text); margin-bottom: var(--s-5); }
-.case-overview { margin-top: var(--s-8); padding: var(--s-6); border: var(--edge-width) solid var(--line); border-radius: var(--r-lg); background: var(--btn-bg); }
-.case-overview h2 { margin-block: var(--s-2) var(--s-6); font-size: var(--fs-lead); font-weight: 600; line-height: 1.35; }
-.tradeoff { margin-top: var(--s-5); padding: var(--s-5); border: var(--edge-width) solid var(--line); border-radius: var(--r-md); background: var(--bg); }
+.case-overview { margin-top: var(--s-9); padding-block: var(--s-7); border-block: var(--edge-width) solid var(--line-strong); }
+.case-overview h2 { margin-block: var(--s-2) var(--s-7); font-size: var(--fs-display); font-weight: 650; line-height: 1.02; letter-spacing: -.035em; }
+.case-overview .story-strip li { padding: 0 var(--s-5) 0 0; border: 0; border-radius: 0; background: transparent; }
+.case-overview .story-strip li + li { padding-left: var(--s-5); border-left: var(--edge-width) solid var(--line); }
+.case-overview .story-strip li + li::before { display: none; }
+.tradeoff { margin-top: var(--s-7); padding: var(--s-5) 0 0; border: 0; border-top: var(--edge-width) solid var(--line); border-radius: 0; background: transparent; }
 .tradeoff h3 { margin-bottom: var(--s-3); font-size: var(--fs-sm); font-weight: 600; }
 .content .tradeoff p { margin: 0; font-size: var(--fs-sm); }
-.case-section { padding: var(--s-6); border: var(--edge-width) solid var(--line); border-radius: var(--r-lg); background: var(--btn-bg); }
-.case-section--result { background: var(--subtle-accent); }
-.case-section > .diagram, .case-section > .case-figure, .case-section > .motion-figure { width: 100%; max-width: none; margin-block: var(--s-6) 0; }
+.case-section { position: relative; margin-top: var(--s-9); padding: var(--s-8) 0 0; border-top: var(--edge-width) solid var(--line-strong); counter-increment: case-chapter; }
+.case-section .section-copy { position: relative; padding-left: var(--s-9); }
+.case-section .section-copy::before { content: "0" counter(case-chapter); position: absolute; top: var(--s-1); left: 0; color: var(--text-dim); font-family: var(--mono); font-size: var(--fs-cap); }
+.case-page .case-section .label { font-size: var(--fs-display); font-weight: 650; line-height: 1.02; letter-spacing: -.035em; }
+.case-section--result { padding: var(--s-7); border-top: 0; border-radius: var(--r-lg); background: var(--subtle-accent); }
+.case-section > .diagram, .case-section > .case-figure, .case-section > .motion-figure { width: 100%; max-width: none; margin-block: var(--s-7) 0; }
 .case-section > .case-figure + .case-figure { margin-top: var(--s-5); }
 .case-list { padding-left: var(--s-5); color: var(--text-2); }
 .case-list li { padding-left: var(--s-1); margin-block: var(--s-2); }
-.diagram { border: var(--edge-width) solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); background: var(--bg); }
+.diagram { border: var(--edge-width) solid var(--line); border-radius: var(--r-lg); padding: var(--s-6); background: var(--btn-bg); }
 .diagram h3 { font-size: var(--fs-body); font-weight: 600; line-height: 1.4; margin-bottom: var(--s-5); }
 .diagram-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); margin-bottom: var(--s-5); }
 .diagram-head h3 { margin-bottom: 0; }
@@ -447,6 +460,14 @@ button { font: inherit; }
 .btn.is-no-shader { outline: var(--edge-width) solid var(--line-strong); }
 @media (max-width: 640px) {
   .content { padding-top: var(--s-6); }
+  .case-page .resume-header { padding: var(--s-5); }
+  .case-overview { margin-top: var(--s-8); padding-block: var(--s-6); }
+  .case-overview .story-strip li { padding: 0 0 var(--s-5); }
+  .case-overview .story-strip li + li { padding: var(--s-5) 0; border-top: var(--edge-width) solid var(--line); border-left: 0; }
+  .case-section { margin-top: var(--s-8); padding-top: var(--s-7); }
+  .case-section .section-copy { padding-left: 0; }
+  .case-section .section-copy::before { position: static; display: block; margin-bottom: var(--s-3); }
+  .case-section--result { padding: var(--s-5); }
   .masthead-inner { align-items: flex-start; }
   .masthead-name { max-width: calc(var(--s-9) + var(--s-5)); line-height: 1.4; white-space: normal !important; }
   .masthead nav { gap: var(--s-3); flex-wrap: wrap; justify-content: flex-end; }

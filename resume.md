@@ -128,6 +128,8 @@
 
 Figma, Photoshop, Illustrator, After Effects, Premiere Pro, ProtoPie, Principle, Miro, Notion, Linear, Jira, Tilda, Webflow, GitHub Pages.
 
+**Код и фреймворки:** HTML, CSS, TypeScript, React, Flutter, Git.
+
 ## Образование
 
 - **Международный институт рынка:** менеджмент и маркетинг, 2016–2019.
